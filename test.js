@@ -8,22 +8,58 @@ var ctx = canvas.getContext('2d');
 // "star"
 var draw_select = "spaceship"
 
+var cx = 400;
+var cy = 300;
+
+
+
 if (draw_select == "spaceship") {
-    /* 
-    ctx.moveTo(400, 300);
-    ctx.lineTo(396,340);
-    ctx.stroke();
-    ctx.moveTo(400, 300);
-    ctx.lineTo(404, 340);
-    ctx.stroke();
-    */
+
+    var w = 35;
+    var h = 65;
+
     ctx.strokeStyle = "white"
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 3;
+
+    // define points:
+    var a = {
+        "x" : cx, 
+        "y" : cy - (0.5 * h)
+    }
+    
+    var b = {
+        "x" : cx - (0.35 * w), 
+        "y" : cy + (0.25 * h)
+    }
+
+    var c = {
+        "x" : cx - (0.5 * w), 
+        "y" : cy + (0.5 * h)
+    }
+
+    var d = {
+        "x" : cx + (0.35 * w), 
+        "y" : cy + (0.25 * h)
+    }
+
+    var e = {
+        "x" : cx + (0.5 * w), 
+        "y" : cy + (0.5 * h)
+    }
+
+
+    // Refer to paper notes for in-depth explanation of how this works
+    // TODO: Add draw pattern to readme? how document?
     ctx.beginPath();
-    ctx.moveTo(400,300);
-    ctx.lineTo(365,400);
-    ctx.moveTo(400,300);
-    ctx.lineTo(435,400);
+    ctx.moveTo(cx,cy);
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(c.x,c.y);
+    ctx.stroke();
+    ctx.moveTo(b.x,b.y);
+    ctx.lineTo(d.x,d.y);
+    ctx.stroke()
+    ctx.moveTo(e.x,e.y);
+    ctx.lineTo(a.x, a.y);
     ctx.stroke();
 }
 
