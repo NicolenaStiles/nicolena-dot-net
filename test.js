@@ -92,42 +92,51 @@ if (draw_select == "enemy") {
     var ew = 75;
     var eh = 25;
 
+    // TEMP
+    var ch = 15;
+
+    var debug_sel = "true"
+
     var a = {
         "x" : cx - (0.5 * ew),
         "y" : cy
     }
-
     var b = {
         "x" : cx - ((0.75) * (0.5 * ew)),
         "y" : cy - (0.5 * eh)
     }
-
     var c = {
-        "x" : cx + ((0.75) * (0.5 * ew)),
+        "x" : cx - ((0.6) * (0.5 * ew)),
         "y" : cy - (0.5 * eh)
     }
-
     var d = {
+        "x" : cx - ((0.45) * (0.5 * ew)),
+        "y" : cy - (0.5 * eh) - ch
+    }
+    var e = {
+        "x" : cx + ((0.45) * (0.5 * ew)),
+        "y" : cy - (0.5 * eh) - ch            
+    }
+    var f = {
+        "x" : cx + ((0.6) * (0.5 * ew)),
+        "y" : cy - (0.5 * eh)
+    }
+    var g = {
+        "x" : cx + ((0.75) * (0.5 * ew)),
+        "y" : cy - (0.5 * eh)
+    }      
+    var h = {
         "x" : cx + (0.5 * ew),
         "y" : cy
     }
-
-    var e = {
-        "x" : cx - ((0.75) * (0.5 * ew)),
-        "y" : cy + (0.5 * eh)
-    }
-
-    var f = {
+    var i = {
         "x" : cx + ((0.75) * (0.5 * ew)),
         "y" : cy + (0.5 * eh)
     }
-
-    console.log(a);
-    console.log(b);
-    console.log(c);
-    console.log(d);
-    console.log(e);
-    console.log(f);
+    var j = {
+        "x" : cx - ((0.75) * (0.5 * ew)),
+        "y" : cy + (0.5 * eh)
+    }
 
     ctx.lineWidth = 2;
     ctx.strokeStyle = "white"
@@ -139,20 +148,26 @@ if (draw_select == "enemy") {
     ctx.stroke();
     ctx.lineTo(d.x,d.y);
     ctx.stroke();
-    ctx.lineTo(a.x,a.y);
-    ctx.stroke();
     ctx.lineTo(e.x,e.y);
     ctx.stroke();
-    ctx.lineTo(f.x, f.y);
+    ctx.lineTo(f.x,f.y);
     ctx.stroke();
-    ctx.lineTo(d.x,d.y);
+    ctx.lineTo(c.x,c.y);
+    ctx.stroke();
+    ctx.lineTo(g.x,g.y);
+    ctx.stroke();
+    ctx.lineTo(h.x,h.y);
+    ctx.stroke();
+    ctx.lineTo(a.x,a.y);
+    ctx.stroke();
+    ctx.lineTo(j.x,j.y);
+    ctx.stroke();
+    ctx.lineTo(i.x,i.y);
+    ctx.stroke();
+    ctx.lineTo(h.x,h.y);
     ctx.stroke();
     ctx.closePath();
 
-    /*
-    ctx.beginPath();
-    ctx.moveTo(cx,cy);
-    */
 }
 
 if (draw_select == "star") {
