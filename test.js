@@ -6,20 +6,26 @@ var ctx = canvas.getContext('2d');
 // really shitty, never do this.
 // "spaceship"
 // "star"
-var draw_select = "spaceship"
+// "bullet"
+var draw_select = "bullet"
 
+// center of canvas (800x600)
 var cx = 400;
 var cy = 300;
 
+// spaceship dimensions
+var w = 35;
+var h = 65;
+var linewidth = 3;
 
+// bullet dimension
+var bulletRadius = 2;
 
+// sketch spaceship
 if (draw_select == "spaceship") {
 
-    var w = 35;
-    var h = 65;
-
     ctx.strokeStyle = "white"
-    ctx.lineWidth = 3;
+    ctx.lineWidth = linewidth;
 
     // define points:
     var a = {
@@ -61,8 +67,20 @@ if (draw_select == "spaceship") {
     ctx.moveTo(e.x,e.y);
     ctx.lineTo(a.x, a.y);
     ctx.stroke();
+
+    // TODO: Add the thrusters!!
 }
 
+// sketch bullet
+if (draw_select == "bullet") {
+    ctx.beginPath();
+    ctx.arc(cx, cy, bulletRadius, 0, Math.PI*2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.closePath();
+}
+
+// sketch asteroid
 if (draw_select == "asteroid") {
 
 }
@@ -84,10 +102,6 @@ if (draw_select == "star") {
     ctx.closePath();
     ctx.fill();
 }
-
-
-// spaceship drawing
-
 
 /* // changes the background display and makes the main menu disappear
 function bg_button() {
