@@ -7,7 +7,7 @@ var ctx = canvas.getContext('2d');
 // "spaceship"
 // "star"
 // "bullet"
-var draw_select = "bullet"
+var draw_select = "enemy"
 
 // center of canvas (800x600)
 var cx = 400;
@@ -67,6 +67,7 @@ if (draw_select == "spaceship") {
     ctx.moveTo(e.x,e.y);
     ctx.lineTo(a.x, a.y);
     ctx.stroke();
+    ctx.closePath();
 
     // TODO: Add the thrusters!!
 }
@@ -83,6 +84,75 @@ if (draw_select == "bullet") {
 // sketch asteroid
 if (draw_select == "asteroid") {
 
+}
+
+// sketch enemy spaceship
+if (draw_select == "enemy") {
+    // enemy dimensions
+    var ew = 75;
+    var eh = 25;
+
+    var a = {
+        "x" : cx - (0.5 * ew),
+        "y" : cy
+    }
+
+    var b = {
+        "x" : cx - ((0.75) * (0.5 * ew)),
+        "y" : cy - (0.5 * eh)
+    }
+
+    var c = {
+        "x" : cx + ((0.75) * (0.5 * ew)),
+        "y" : cy - (0.5 * eh)
+    }
+
+    var d = {
+        "x" : cx + (0.5 * ew),
+        "y" : cy
+    }
+
+    var e = {
+        "x" : cx - ((0.75) * (0.5 * ew)),
+        "y" : cy + (0.5 * eh)
+    }
+
+    var f = {
+        "x" : cx + ((0.75) * (0.5 * ew)),
+        "y" : cy + (0.5 * eh)
+    }
+
+    console.log(a);
+    console.log(b);
+    console.log(c);
+    console.log(d);
+    console.log(e);
+    console.log(f);
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "white"
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x,b.y);
+    ctx.stroke();
+    ctx.lineTo(c.x,c.y);
+    ctx.stroke();
+    ctx.lineTo(d.x,d.y);
+    ctx.stroke();
+    ctx.lineTo(a.x,a.y);
+    ctx.stroke();
+    ctx.lineTo(e.x,e.y);
+    ctx.stroke();
+    ctx.lineTo(f.x, f.y);
+    ctx.stroke();
+    ctx.lineTo(d.x,d.y);
+    ctx.stroke();
+    ctx.closePath();
+
+    /*
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    */
 }
 
 if (draw_select == "star") {
