@@ -7,7 +7,7 @@ var ctx = canvas.getContext('2d');
 // "spaceship"
 // "star"
 // "bullet"
-var draw_select = "enemy"
+var draw_select = "asteroid"
 
 // center of canvas (800x600)
 var cx = 400;
@@ -20,6 +20,9 @@ var linewidth = 3;
 
 // bullet dimension
 var bulletRadius = 2;
+
+// asteroid radius
+var asteroidRadius = 50;
 
 // sketch spaceship
 if (draw_select == "spaceship") {
@@ -82,8 +85,52 @@ if (draw_select == "bullet") {
 }
 
 // sketch asteroid
+// base unit is hexagon (check unit circle for magic numbers)
 if (draw_select == "asteroid") {
+    var a = {
+        "x" : cx - asteroidRadius,
+        "y" : cy 
+    }
+    var b = {
+        "x" : cx - (asteroidRadius * Math.sqrt(2)/2),
+        "y" : cy - (asteroidRadius * Math.sqrt(2)/2)
+    }
+    var c = {
+        "x" : cx + (asteroidRadius * Math.sqrt(2)/2),
+        "y" : cy - (asteroidRadius * Math.sqrt(2)/2)
+    }
+    var d = {
+        "x" : cx + asteroidRadius,
+        "y" : cy
+    }
+    var e = {
+        "x" : cx + (asteroidRadius * Math.sqrt(2)/2),
+        "y" : cy + (asteroidRadius * Math.sqrt(2)/2)
+    }
+    var f = {
+        "x" : cx - (asteroidRadius * Math.sqrt(2)/2),
+        "y" : cy + (asteroidRadius * Math.sqrt(2)/2)
+    }
 
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "white"
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x,b.y);
+    ctx.stroke();
+    ctx.lineTo(c.x,c.y);
+    ctx.stroke();
+    ctx.lineTo(d.x,d.y);
+    ctx.stroke();
+    ctx.lineTo(e.x,e.y);
+    ctx.stroke();
+    ctx.lineTo(f.x,f.y);
+    ctx.stroke();
+    ctx.lineTo(a.x,a.y);
+    ctx.stroke();
+    ctx.closePath();
 }
 
 // sketch enemy spaceship
@@ -167,9 +214,9 @@ if (draw_select == "enemy") {
     ctx.lineTo(h.x,h.y);
     ctx.stroke();
     ctx.closePath();
-
 }
 
+// debug only: draw star from tutorial
 if (draw_select == "star") {
     ctx.fillStyle = "blue";
     ctx.beginPath();
