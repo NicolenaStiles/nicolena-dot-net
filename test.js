@@ -9,9 +9,16 @@ var ctx = canvas.getContext('2d');
 // "bullet"
 var draw_select = "asteroid"
 
+console.log("in the test file!");
+console.log(document.body.clientWidth);
+console.log(document.body.clientHeight);
+
 // center of canvas (800x600)
-var cx = 400;
-var cy = 300;
+var cx = canvas.getAttribute("width")/2;
+var cy = canvas.getAttribute("height")/2;
+
+console.log(cx);
+console.log(cy);
 
 // spaceship dimensions
 var w = 35;
