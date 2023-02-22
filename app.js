@@ -14,8 +14,9 @@ function on_load () {
     var canvas = document.getElementById('myCanvas');
     var ctx = canvas.getContext('2d');
 
+    // set initial conditions
     // center of canvas
-    var cx = canvas.getAttribute("width")/2;
+    var cx = canvas.getAttribute("width")/4;
     var cy = canvas.getAttribute("height")/2;
 
     // spaceship dimensions
@@ -26,6 +27,13 @@ function on_load () {
     // drawing settings
     ctx.strokeStyle = "white"
     ctx.lineWidth = linewidth;
+
+    // starting position
+    // movement speed/direction
+    var x = cx;
+    var y = cy;
+    var dx = 0;
+    var dy = -2;
 
     // define points:
     var a = {
@@ -53,21 +61,31 @@ function on_load () {
         "y" : cy + (0.5 * h)
     }
 
+    // enter animation loop
+    // sketch ship
+    function drawShip(dx, dy) {
+        // Refer to paper notes for in-depth explanation of how this works
+        // TODO: Add draw pattern to readme? how document?
+        ctx.beginPath();
+        ctx.moveTo(a.x + dx, a.y + dy);
+        ctx.lineTo(c.x + dx, c.y + dy);
+        ctx.stroke();
+        ctx.moveTo(b.x + dx, b.y + dy);
+        ctx.lineTo(d.x + dx, d.y + dy);
+        ctx.stroke()
+        ctx.moveTo(e.x + dx, e.y + dy);
+        ctx.lineTo(a.x + dx, a.y + dy);
+        ctx.stroke();
+        ctx.closePath();
+    }
+    // apply animation
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawShip(x,y);
+        console.log(x);
+        x += dx;
+        y += dy;
+    }
 
-    // Refer to paper notes for in-depth explanation of how this works
-    // TODO: Add draw pattern to readme? how document?
-    ctx.beginPath();
-    ctx.moveTo(cx,cy);
-    ctx.moveTo(a.x, a.y);
-    ctx.lineTo(c.x,c.y);
-    ctx.stroke();
-    ctx.moveTo(b.x,b.y);
-    ctx.lineTo(d.x,d.y);
-    ctx.stroke()
-    ctx.moveTo(e.x,e.y);
-    ctx.lineTo(a.x, a.y);
-    ctx.stroke();
-    ctx.closePath();
-
-    // TODO: Add the thrusters!!
+    setInterval(draw, 10);
 }
