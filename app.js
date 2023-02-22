@@ -7,8 +7,8 @@
 function on_load () {
 
     // resizes canvas to be the size of the screen
-    document.getElementById('myCanvas').setAttribute("width", document.body.clientWidth);
-    document.getElementById('myCanvas').setAttribute("height", document.body.clientHeight);
+    //document.getElementById('myCanvas').setAttribute("width", document.body.clientWidth);
+    //document.getElementById('myCanvas').setAttribute("height", document.body.clientHeight);
 
     // grab canvas context
     var canvas = document.getElementById('myCanvas');
@@ -82,9 +82,33 @@ function on_load () {
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawShip(x,y);
-        console.log(x);
-        x += dx;
-        y += dy;
+
+        if (x + dx > canvas.width) {
+            x = 0;
+            console.log("x1");
+        } else if (x + dx < 0) {
+            x = canvas.width;
+            console.log("x2");
+        } else {
+            x += dx;
+            console.log("x3");
+        }
+        
+        if (y + dy > canvas.height) {
+            y = 0;
+            console.log("y1");
+        } else if (y + dy < 0) {
+            y = canvas.height;
+            console.log("y2");
+        } else {
+            y += dy;
+            console.log("y3");
+        }
+        //console.log(x);
+        //console.log(y);
+        //console.log(canvas.width);
+        //console.log(canvas.height);
+
     }
 
     setInterval(draw, 10);

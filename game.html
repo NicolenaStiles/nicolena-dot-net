@@ -13,14 +13,15 @@
 
     <title>>GAME</title>
         <style>
-            * {
-                padding: 0;
-                margin: 0;
-            }
-            body,
-            html {
-              height: 100%;
+            html, body {
               width: 100%;
+              height: 100%;
+              padding: 0;
+              margin: 0;
+            }
+            #canvas {
+              width: 100%;
+              height: 100%;
             }
             body {
               background-image: url('images/night-sky.jpg');
@@ -30,10 +31,12 @@
             }
             @font-face { font-family: Hyperspace; src: url('fonts/HyperspaceBold-GM0g.ttf'); } 
             canvas {
+                position: fixed;
                 background: #000;
                 display: block;
                 margin: 0 auto;
             }
+
         </style>
     </head>
     <body onload="on_load()">
