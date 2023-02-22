@@ -84,35 +84,120 @@ if (draw_select == "bullet") {
     ctx.closePath();
 }
 
+// function for int generation
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 // sketch asteroid
-// base unit is hexagon (check unit circle for magic numbers)
+// base unit is octagon (check unit circle for magic numbers)
 if (draw_select == "asteroid") {
     var a = {
         "x" : cx - asteroidRadius,
-        "y" : cy 
+        "y" : cy, 
+        "arc" : true
     }
     var b = {
         "x" : cx - (asteroidRadius * Math.sqrt(2)/2),
-        "y" : cy - (asteroidRadius * Math.sqrt(2)/2)
+        "y" : cy - (asteroidRadius * Math.sqrt(2)/2),
+        "arc" : true
     }
     var c = {
-        "x" : cx + (asteroidRadius * Math.sqrt(2)/2),
-        "y" : cy - (asteroidRadius * Math.sqrt(2)/2)
+        "x" : cx,
+        "y" : cy - asteroidRadius,
+        "arc" : true 
     }
     var d = {
-        "x" : cx + asteroidRadius,
-        "y" : cy
+        "x" : cx + (asteroidRadius * Math.sqrt(2)/2),
+        "y" : cy - (asteroidRadius * Math.sqrt(2)/2),
+        "arc" : true
     }
     var e = {
-        "x" : cx + (asteroidRadius * Math.sqrt(2)/2),
-        "y" : cy + (asteroidRadius * Math.sqrt(2)/2)
+        "x" : cx + asteroidRadius,
+        "y" : cy,
+        "arc" : true
     }
     var f = {
+        "x" : cx + (asteroidRadius * Math.sqrt(2)/2),
+        "y" : cy + (asteroidRadius * Math.sqrt(2)/2),
+        "arc" : true
+    }
+    var g = {
+        "x" : cx,
+        "y" : cy + asteroidRadius,
+        "arc" : true
+    }
+    var h = {
         "x" : cx - (asteroidRadius * Math.sqrt(2)/2),
-        "y" : cy + (asteroidRadius * Math.sqrt(2)/2)
+        "y" : cy + (asteroidRadius * Math.sqrt(2)/2),
+        "arc" : true
     }
 
+    // throw all those points into an array for numbered access
+    // this is redundant but whatever
+    let hex_points = [a,b,c,d,e,f,g,h];
 
+    // run as octagon or rand
+    var run_mode = "oct"
+
+    // generates early test graphic, which is just an octogon
+    if (run_mode == "oct") {
+        // style settings
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "white";
+
+        // draw shape
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x,b.y);
+        ctx.stroke();
+        ctx.lineTo(c.x,c.y);
+        ctx.stroke();
+        ctx.lineTo(d.x,d.y);
+        ctx.stroke();
+        ctx.lineTo(e.x,e.y);
+        ctx.stroke();
+        ctx.lineTo(f.x,f.y);
+        ctx.stroke();
+        ctx.lineTo(g.x,g.y);
+        ctx.stroke();
+        ctx.lineTo(h.x,h.y);
+        ctx.stroke();
+        ctx.lineTo(a.x,a.y);
+        ctx.stroke();
+        ctx.closePath();
+    } 
+
+    // actual end goal so they look asteroid-y
+    if (run_mode == "rand") {
+        // 8 segments in hexagon
+        // 4 of those are "regular" arcs
+        let num_arcs = 4;
+
+        // which ones will be regular arcs?
+        // magic number because hexagon
+        for (let i = 0; i < num_arcs; i++) {
+            let rand_arc = getRandomInt(7)
+            hex_points[rand_arc].arc = false;
+        } 
+        console.log(hex_points);
+
+        // loop over points and draw appropriately
+        // number of points varies by number of arcs
+        
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "white";
+
+        // magic number because octogon again
+        for (let i = 0; i < 7; i++) {
+            
+        }
+
+        ctx.closePath();
+    }
+    
+    // draw asteroid
+    /*
     ctx.lineWidth = 2;
     ctx.strokeStyle = "white"
     ctx.beginPath();
@@ -131,6 +216,7 @@ if (draw_select == "asteroid") {
     ctx.lineTo(a.x,a.y);
     ctx.stroke();
     ctx.closePath();
+    */
 }
 
 // sketch enemy spaceship
