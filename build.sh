@@ -9,5 +9,5 @@ fi
 # if user is root, go ahead and build "website test" image
 podman build -t website_test .
 
-# run with local .env file after built
-# podman run -it --rm --env-file .env localhost/website_test .
+# run container
+podman run -it --rm --network host localhost/website_test
