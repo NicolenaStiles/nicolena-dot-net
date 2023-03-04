@@ -2,9 +2,12 @@
 //
 // one day I'll look at this file and think it's the stupidest thing of all time
 // but that day is not today!
+import { call_test } from "./frame.js";
 
 // triggers on load of body
 function on_load () {
+
+    console.log("Hello from on_load in app.js!")
 
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
@@ -28,7 +31,7 @@ function on_load () {
         ctx.strokeStyle = "white"
         ctx.lineWidth = linewidth;
 
-            // starting position
+        // starting position
         // movement speed/direction
         var x = cx;
         var y = cy;
@@ -86,6 +89,7 @@ function on_load () {
       drawStuff(); 
     }
     
+    call_test();
     resizeCanvas();
 
 
