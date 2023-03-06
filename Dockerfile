@@ -9,7 +9,7 @@ LABEL Remarks="Containerized js development example."
 
 # npm install
 RUN npm install -g parcel 
-
+# uh is this redundant? fix this later
 RUN npm install -g typescript
 
 # copy in relevant files first
