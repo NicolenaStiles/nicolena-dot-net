@@ -137,44 +137,28 @@ function draw() {
     var shipWidth = 35;
     var shipHeight = 65;
 
-    /* 
-    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
-        dx = -dx;
+    // boundary checking: x
+    if(x + dx > canvas.width) {
+        x = 1;
+    } else if (x + dx < 0) {
+        x = canvas.width-1;
     }
-    if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
-        dy = -dy;
-    }
-    */
 
-    /*
-    if (rightPressed && x < canvas.width-shipWidth) {
-        x += dx;
+    // boundary checking: y
+    if(y + dy > canvas.height) {
+        y = 1;
+    } else if (y + dy < 0) {
+        y = canvas.height-1;
     }
-    else if(leftPressed && x > 0) {
-        paddleX -= 7;
-    }
-    */
-
-   // no boundary checking yet
-   /*
-   if (rightPressed) {
-    x += dx;
-   } else if (leftPressed) {
-    x -= dx;
-   } else if (upPressed) {
-    y -= dy;
-   } else if (downPressed) {
-    y += dy;
-   }
-   */
-
-   // testing rotation
+    
+   // rotation
     if (rightPressed) {
         r += dr;
     } else if (leftPressed) {
         r -= dr;
     }
 
+    // thrusters
     if (upPressed) {
         x += dx * Math.sin(r * Math.PI / 180.0);
         y -= dy * Math.cos(r * Math.PI / 180.0);
