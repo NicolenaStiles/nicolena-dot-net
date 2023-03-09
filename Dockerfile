@@ -7,6 +7,7 @@ EXPOSE 1234
 MAINTAINER figure8
 LABEL Remarks="Containerized js development example."
 
+# move these to package.json
 # npm install
 RUN npm install -g parcel 
 # uh is this redundant? fix this later
