@@ -7,12 +7,15 @@ var canvas = <HTMLCanvasElement>document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
 // Initial conditions (start ship in middle of canvas)
+// r = rotation (starts at 0)
 var x = canvas.width/2;
 var y = canvas.height/2;
+var r = 0;
 
-// Move speed of ship
+// Speed/rotation rates of ship
 var dx = 2;
 var dy = 2;
+var dr = 2;
 
 // Directional arrows inital conditions
 var rightPressed = false;
@@ -52,8 +55,16 @@ function keyUpHandler(e: KeyboardEvent) {
     }
 }
 
+function rotate_point(pointX : number, pointY : number, originX : number, originY : number, angle : number) {
+    angle = angle * Math.PI / 180.0;
+    return {
+        x: Math.cos(angle) * (pointX-originX) - Math.sin(angle) * (pointY-originY) + originX,
+        y: Math.sin(angle) * (pointX-originX) + Math.cos(angle) * (pointY-originY) + originY
+    };
+}
+
 // Draw spaceship based on center of image
-function drawSpaceship(cx: number, cy: number) {
+function drawSpaceship(cx: number, cy: number, rotation: number) {
 
     // spaceship dimensions
     var w = 35;
@@ -94,16 +105,22 @@ function drawSpaceship(cx: number, cy: number) {
         "x" : cx + (0.5 * w), 
         "y" : cy + (0.5 * h)
     }
+
+    var f_a = rotate_point(a.x,a.y,cx,cy,rotation);
+    var f_b = rotate_point(b.x,b.y,cx,cy,rotation);
+    var f_c = rotate_point(c.x,c.y,cx,cy,rotation);
+    var f_d = rotate_point(d.x,d.y,cx,cy,rotation);
+    var f_e = rotate_point(e.x,e.y,cx,cy,rotation);
     
     ctx?.beginPath();
-    ctx?.moveTo(a.x, a.y);
-    ctx?.lineTo(c.x, c.y);
+    ctx?.moveTo(f_a.x, f_a.y);
+    ctx?.lineTo(f_c.x, f_c.y);
     ctx?.stroke();
-    ctx?.moveTo(b.x, b.y);
-    ctx?.lineTo(d.x, d.y);
+    ctx?.moveTo(f_b.x, f_b.y);
+    ctx?.lineTo(f_d.x, f_d.y);
     ctx?.stroke()
-    ctx?.moveTo(e.x, e.y);
-    ctx?.lineTo(a.x, a.y);
+    ctx?.moveTo(f_e.x, f_e.y);
+    ctx?.lineTo(f_a.x, f_a.y);
     ctx?.stroke();
     ctx?.closePath();
 
@@ -114,7 +131,7 @@ function drawSpaceship(cx: number, cy: number) {
 function draw() {
     // clear full screen
     ctx?.clearRect(0,0, canvas.width, canvas.height);
-    drawSpaceship(x,y);
+    drawSpaceship(x,y,r);
 
     // spaceship dimensions
     var shipWidth = 35;
@@ -139,6 +156,7 @@ function draw() {
     */
 
    // no boundary checking yet
+   /*
    if (rightPressed) {
     x += dx;
    } else if (leftPressed) {
@@ -147,6 +165,14 @@ function draw() {
     y -= dy;
    } else if (downPressed) {
     y += dy;
+   }
+   */
+
+   // testing rotation
+   if (rightPressed) {
+        r += dr;
+   } else if (leftPressed) {
+        r -= dr;
    }
 
 }
