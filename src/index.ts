@@ -169,11 +169,16 @@ function draw() {
    */
 
    // testing rotation
-   if (rightPressed) {
+    if (rightPressed) {
         r += dr;
-   } else if (leftPressed) {
+    } else if (leftPressed) {
         r -= dr;
-   }
+    }
+
+    if (upPressed) {
+        x += dx * Math.sin(r * Math.PI / 180.0);
+        y -= dy * Math.cos(r * Math.PI / 180.0);
+    }
 
 }
 
