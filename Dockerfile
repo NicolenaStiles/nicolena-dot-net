@@ -14,8 +14,8 @@ RUN npm install -g parcel
 RUN npm install -g typescript
 
 # copy in relevant files first
-COPY ./src/ /root/src
-WORKDIR /root/src
+COPY ./graphics/ /root/graphics
+WORKDIR /root/graphics
 
 # actually run parcel
 CMD ["parcel", "index.html"]
