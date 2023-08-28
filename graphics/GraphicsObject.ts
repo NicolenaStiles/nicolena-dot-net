@@ -91,8 +91,8 @@ export class GraphicsObject {
         }
     }
    
-    public print_params(): string {
-        return `Object dimensions: ${this.width} x ${this.height} Center: ${this.center['x']}, ${this.center['y']}`;
+    public print_params(): void {
+        console.log(`Object dimensions: ${this.width} x ${this.height} Center: ${this.center['x']}, ${this.center['y']}`);
     }
 
     public print_points(): void {
@@ -102,7 +102,6 @@ export class GraphicsObject {
     }
 
     public print_order(): void {
-        console.log(`Here!!`);
         console.log(`${this.sketch_order}`);
     }
 }

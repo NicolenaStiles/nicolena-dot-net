@@ -24,6 +24,6 @@ let test_obj = new GraphicsObject(test_obj_type,
                                   test_obj_height,
                                   test_obj_center_x,
                                   test_obj_center_y);
-console.log(`${test_obj.print_params()}`);
+test_obj.print_params();
 test_obj.print_points();
 test_obj.print_order();
