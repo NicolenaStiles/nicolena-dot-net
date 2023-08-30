@@ -8,8 +8,8 @@
   "license": "ISC",
   "scripts": {
     "clean": "rm dist/bundle.js",
-    "start": "parcel src/index.html",
-    "build-prod": "parcel build src/index.html"
+    "start": "parcel graphics/index.html",
+    "build-prod": "parcel build graphics/index.html"
   },
   "dependencies": {},
   "devDependencies": {
