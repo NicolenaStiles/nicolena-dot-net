@@ -26,3 +26,8 @@ RUN git clone https://github.com/neovim/neovim && \
     git checkout stable && \
     make CMAKE_BUILD_TYPE=RelWithDebInfo && \
     make install
+
+# set up lazy.nvim
+WORKDIR /root
+RUN mkdir .config
+COPY ./nvim/ /root/.config/nvim
