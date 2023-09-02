@@ -46,3 +46,8 @@ Non-boilerplate things below:
 
 ### Got some info on setting up this library using this site:
 `https://createapp.dev/`
+
+## NVIM config reference links
+https://github.com/josean-dev/dev-environment-files/blob/main/.config/nvim/lua/josean/plugins/lsp/lspconfig.lua
+https://github.com/lucashilles/flutter-dev-container/blob/master/.devcontainer/Dockerfile
+https://github.com/RobertBrunhage/.dotfiles/blob/main/nvim/.config/nvim/init.lua
